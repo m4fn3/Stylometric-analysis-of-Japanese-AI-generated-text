@@ -1,0 +1,5 @@
+**/__pycache__/**
+**/data/**/wiki40b-ja_test.json
+**/data/**/wiki40b-ja_train.json
+**/data/**/wiki40b-ja_validation.json
+src/chatgpt/client.py
