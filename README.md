@@ -4,6 +4,7 @@
 2. Run preprocess_data in wiki40b mode
 3. Run split_wiki40b-ja_to_parts.py
 4. Run gen_AI-generated_text.py
+5. Run preprocess_data in chatgpt4o mode
 
 ## Notes
 Preprocessed data is excluded due to its size.
