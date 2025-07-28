@@ -119,7 +119,7 @@ class FeatureExtractor:
                     idx = kinougo_list_hiragana.index(f"{token.lemma_}-{token.tag_}")
                     kinougo_counts[idx] += 1
                 elif f"{token.lemma_}-{token.tag_}" in kinougo_list:
-                    idx = kinougo_list.index(f"{token.text}-{token.tag_}")
+                    idx = kinougo_list.index(f"{token.lemma_}-{token.tag_}")
                     kinougo_counts[idx] += 1
         return kinougo_counts
     
@@ -133,7 +133,10 @@ class FeatureExtractor:
                 syouryaku_vector[0] += 1
             if not any(child.dep_ == "obj" for child in verb.children):
                 syouryaku_vector[1] += 1
-        syouryaku_vector /= len(verbs) if verbs else np.zeros(2)
+        if len(verbs) != 0:
+            syouryaku_vector /= len(verbs)
+        else:
+            syouryaku_vector = np.zeros(2)
         return syouryaku_vector
                 
 if __name__ == "__main__":
