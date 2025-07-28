@@ -2,6 +2,7 @@ import os
 import shutil
 from tqdm import tqdm
 import pyprojroot
+import glob
 
 from src.validator import Validator
 
@@ -16,20 +17,18 @@ my_validator.load_data(validation_data)
 best_accuracy = 0
 best_model_path = None
 
-for model_file in tqdm(os.listdir(model_output_dir)):
-    model_file_path = os.path.join(model_output_dir, model_file)
+for model_file_path in tqdm(glob.glob(os.path.join(model_output_dir, '*.pkl'))):
     my_validator.load_model(model_file_path)
-    tqdm.write(f"Validating: {model_file_path}")
-    accuracy, precision, recall = my_validator.evaluate_model()
-    tqdm.write(f"-> Accuracy: {accuracy}, Precision: {precision}, Recall: {recall}")
+    accuracy, precision, recall, f1_score = my_validator.evaluate_model()
+    tqdm.write(f"{model_file_path.split("/")[-1]} -> Accuracy: {accuracy}, Precision: {precision}, Recall: {recall}, F1 Score: {f1_score}")
     if accuracy > best_accuracy:
         best_accuracy = accuracy
         best_model_path = model_file_path
 
 if best_model_path is None:
-    print("No models found for validation. Please check the model dir path.")
+    print("[x] No models found for validation. Please check the model dir path.")
 else:
     best_model_output_path = os.path.join(model_output_dir, 'best_model.pkl')
     shutil.copy(best_model_path, best_model_output_path)
-    print("Validation completed.")
-    print(f"The best model: {best_model_path} (accuracy: {best_accuracy}) is saved to {best_model_output_path}")
+    print("[o] Validation completed.")
+    print(f"[*] The best model: {best_model_path} (accuracy: {best_accuracy}) is saved to {best_model_output_path}")
