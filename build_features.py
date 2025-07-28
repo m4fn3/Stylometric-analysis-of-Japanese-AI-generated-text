@@ -31,13 +31,13 @@ def build_features(split):
         labels.append(0)
         vec = FeatureExtractor(wiki40bja_data[key], nlp).extract_future_vector()
         vectors.append(vec)
-    with open(base_path / f"data/features/{split}.json", "wb") as f:
+    with open(base_path / f"data/features/{split}.pkl", "wb") as f:
         pickle.dump(
             (
                 np.array(titles),
                 np.array(labels),
                 np.array(vectors)
-            )
+            ), f
         )
     tqdm.write(f"[*] Future extraction for {split} completed. ")
 
