@@ -14,6 +14,9 @@ class Trainer:
         with open(file_path, 'wb') as f:
             pickle.dump(self.model, f)
             
-    def train(self, max_depth: float, n_estimators: float) -> None:
+    def train(self, max_depth: float, n_estimators: float, range = None) -> None: # range: 特徴量の範囲指定
+        X = self.X.copy()
+        if range is not None:
+            X = X[:,range[0]:range[1]]
         self.model = Ensemble.RandomForestClassifier(max_depth=max_depth, n_estimators=n_estimators)
-        self.model.fit(self.X, self.y)
+        self.model.fit(X, self.y)

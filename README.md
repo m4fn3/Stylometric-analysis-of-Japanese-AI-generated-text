@@ -8,6 +8,7 @@
 (`src/chatgpt/client.py` is required.)
 5. Run preprocess_data in chatgpt4o mode
 6. Run merge_chatgpt4o_from_parts.py
+7. Run build_features.py
 
 ### Train
 1. Run train.py
@@ -19,6 +20,7 @@
 1. Run predict.py
 
 ## Notes
+- Label 0 is for human-written text, and label 1 is for AI-generated text.
 - Merged raw / preprocessed data is excluded due to its size. Please refer to the splitted data in `data/preprocessed/chatgpt4o/parts/`.
 - `src/chatgpt/client.py` is excluded. The structure is like below:
 ```python
