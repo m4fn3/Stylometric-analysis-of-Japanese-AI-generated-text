@@ -82,6 +82,15 @@ class FeatureExtractor:
                     distances.append(distance)
             depths.extend(part_depths)
             heights.append(max(part_depths))
+        # fallback
+        if not distances:
+            distances = [0]
+        if not heights:
+            heights = [0]
+        if not depths:
+            depths = [0]
+        if not branches:
+            branches = [0]
         # それぞれの max/min/mean/std を計算
         kakariuke_vector = [
             np.max(heights), np.min(heights), np.mean(heights), np.std(heights),
@@ -135,8 +144,6 @@ class FeatureExtractor:
                 syouryaku_vector[1] += 1
         if len(verbs) != 0:
             syouryaku_vector /= len(verbs)
-        else:
-            syouryaku_vector = np.zeros(2)
         return syouryaku_vector
                 
 if __name__ == "__main__":
