@@ -1,6 +1,8 @@
 datasets
+taqdm
 pyprojroot
 neologdn
 ginza
 ja_ginza
 numpy
+scikit-learn
