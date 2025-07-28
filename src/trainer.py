@@ -1,4 +1,3 @@
-import sklearn.svm as SVM
 import sklearn.ensemble as Ensemble
 import pickle
 
@@ -15,6 +14,6 @@ class Trainer:
         with open(file_path, 'wb') as f:
             pickle.dump(self.model, f)
             
-    def train(self, hyperparameter: float) -> None:
-        self.model = Ensemble.RandomForestClassifier(max_depth=hyperparameter)
+    def train(self, max_depth: float, n_estimators: float) -> None:
+        self.model = Ensemble.RandomForestClassifier(max_depth=max_depth, n_estimators=n_estimators)
         self.model.fit(self.X, self.y)

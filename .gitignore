@@ -6,4 +6,6 @@
 **/data/**/chatgpt4o_train.json
 **/data/**/chatgpt4o_validation.json
 **/data/raw/**
+**/data/features/**
+**/models/**
 src/chatgpt/client.py

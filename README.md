@@ -7,13 +7,16 @@
 4. Run gen_AI-generated_text.py
 (`src/chatgpt/client.py` is required.)
 5. Run preprocess_data in chatgpt4o mode
-6. Run merge_chatgpt4o_from_parts.py <- now
+6. Run merge_chatgpt4o_from_parts.py
 
 ### Train
+1. Run train.py
 
 ### Validate
+1. Run validate.py
 
 ### Predict
+1. Run predict.py
 
 ## Notes
 - Merged raw / preprocessed data is excluded due to its size. Please refer to the splitted data in `data/preprocessed/chatgpt4o/parts/`.

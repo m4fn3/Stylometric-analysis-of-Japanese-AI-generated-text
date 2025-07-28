@@ -6,7 +6,7 @@ from src.predictor import Predictor
 
 base_path = pyprojroot.find_root(pyprojroot.has_dir(".git"))
 
-test_data = base_path / "data/features/test.json"
+test_data = base_path / "data/features/test.pkl"
 best_model_path = base_path / "models/best_model.pkl"
 
 my_predictor = Predictor()

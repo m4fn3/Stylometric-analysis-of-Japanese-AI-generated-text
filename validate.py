@@ -7,7 +7,7 @@ from src.validator import Validator
 
 base_path = pyprojroot.find_root(pyprojroot.has_dir(".git"))
 
-validation_data = base_path / "data/features/validation.json"
+validation_data = base_path / "data/features/validation.pkl"
 model_output_dir = base_path / "models"
 
 my_validator = Validator()
