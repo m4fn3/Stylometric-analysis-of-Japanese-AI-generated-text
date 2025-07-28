@@ -40,7 +40,7 @@ class FeatureExtractor:
                 tag = "補助記号-句点"
             elif tag == "補助記号-読点":
                 tag = "補助記号-読点"
-            elif tag.stawrtswith("補助記号-括弧"):
+            elif tag.startswith("補助記号-括弧"):
                 tag = "補助記号-括弧"
             else:
                 tag = "記号"
