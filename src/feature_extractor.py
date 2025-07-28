@@ -17,7 +17,7 @@ class FeatureExtractor:
         syouryaku_vec = self._extract_syouryaku()
         return np.concatenate([hinshi_bigram_vec, zyoshi_bigram_vec, kakariuke_vec, kutouten_vec, kinougo_vec, syouryaku_vec])
     
-    # 品詞のバイグラム
+    # 品詞のバイグラム (1~1156: 1156)
     def _extract_hinshi_bigrams(self) -> np.ndarray:
         bigrams = np.zeros((34, 34)) # 34*34の行列
         for sent in self.doc.sents:
@@ -45,7 +45,7 @@ class FeatureExtractor:
         tag = "-".join(tag.split('-')[:2]) # ハイフンで3つ目以降の分類は無視
         return tags.index(tag)
     
-    # 助詞のバイグラム
+    # 助詞のバイグラム (1157~2117: 961)
     def _extract_zyoshi_bigrams(self) -> np.ndarray:
         # 助詞の一覧
         zyoshi_list = {
@@ -65,7 +65,7 @@ class FeatureExtractor:
                 bigrams[zyoshi_sent[i], zyoshi_sent[i + 1]] += 1
         return bigrams.ravel()
     
-    # 係り受けの特徴
+    # 係り受けの特徴 (2118~2133: 16)
     def _extract_kakariuke(self) -> np.ndarray:
         heights = [] # 高さ
         depths = [] # 深さ
@@ -100,7 +100,7 @@ class FeatureExtractor:
         ]
         return np.array(kakariuke_vector)
     
-    # 句読点の分布
+    # 句読点の分布 (2134~2143: 10)
     def _extract_kutouten(self) -> np.ndarray:
         kutouten_counts = np.zeros(10) # 文章を10区間に分けてカウント
         # 句読点の分布を各文章ごとに計算
@@ -113,7 +113,7 @@ class FeatureExtractor:
                     kutouten_counts[idx] += 1
         return kutouten_counts
     
-    # 機能語の使用頻度
+    # 機能語の使用頻度 (2144~2343: 200)
     def _extract_kinougo(self) -> np.ndarray:
         # 機能語の分類
         kinougo_tags = ["連体詞", "副詞", "接続詞", "助動詞", "助詞-格助詞", "助詞-副助詞", "助詞-係助詞", "助詞-接続助詞", "助詞-終助詞", "助詞-準体助詞"]
@@ -132,7 +132,7 @@ class FeatureExtractor:
                     kinougo_counts[idx] += 1
         return kinougo_counts
     
-    # 省略傾向
+    # 省略傾向 (2344~2345: 2)
     def _extract_syouryaku(self) -> np.ndarray:
         # 動詞の従属関係に主部(csubj)や目的部(obj)があるかを調べる
         verbs = [token for token in self.doc if token.pos_ == "VERB"]
