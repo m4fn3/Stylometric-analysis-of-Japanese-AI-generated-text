@@ -24,5 +24,5 @@ class AsyncChatGPTClient:
         
     async def get_response(self, text: str) -> str:
         pass
-        return "response
+        return "response"
 ```

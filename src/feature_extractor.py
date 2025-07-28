@@ -120,7 +120,7 @@ class FeatureExtractor:
                 if f"{token.lemma_}-{token.tag_}" in kinougo_list_hiragana:
                     idx = kinougo_list_hiragana.index(f"{token.lemma_}-{token.tag_}")
                     kinougo_counts[idx] += 1
-                elif f"{token.text}-{token.tag_}" in kinougo_list:
+                elif f"{token.lemma_}-{token.tag_}" in kinougo_list:
                     idx = kinougo_list.index(f"{token.text}-{token.tag_}")
                     kinougo_counts[idx] += 1
         return kinougo_counts
