@@ -1,4 +1,4 @@
-# Stylometric-analysis-of-Japanese-AI-genereated-text [WIP]
+# Stylometric-analysis-of-Japanese-AI-genereated-text
 ## Step-by-step guide
 ### Preprocess
 1. Run download_wiki40b-ja.py
