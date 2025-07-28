@@ -2,5 +2,8 @@
 **/data/**/wiki40b-ja_test.json
 **/data/**/wiki40b-ja_train.json
 **/data/**/wiki40b-ja_validation.json
+**/data/**/chatgpt4o_test.json
+**/data/**/chatgpt4o_train.json
+**/data/**/chatgpt4o_validation.json
 **/data/raw/**
 src/chatgpt/client.py

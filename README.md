@@ -6,7 +6,8 @@
 3. Run split_wiki40b-ja_to_parts.py
 4. Run gen_AI-generated_text.py
 (`src/chatgpt/client.py` is required.)
-5. Run preprocess_data in chatgpt4o mode ← now
+5. Run preprocess_data in chatgpt4o mode
+6. Run merge_chatgpt4o_from_parts.py <- now
 
 ### Train
 
