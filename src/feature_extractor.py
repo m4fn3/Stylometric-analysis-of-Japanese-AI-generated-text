@@ -1,11 +1,9 @@
-import spacy
 import ginza
 import numpy as np
         
 class FeatureExtractor:
-    def __init__(self, text):
+    def __init__(self, text, nlp):
         self.text = text
-        nlp = spacy.load('ja_ginza')
         self.doc = nlp(text)
         self.vector = {}
     

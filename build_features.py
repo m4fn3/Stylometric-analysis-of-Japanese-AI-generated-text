@@ -3,10 +3,13 @@ from tqdm import tqdm
 import pyprojroot
 import numpy as np
 import pickle
+import spacy
 
 from src.feature_extractor import FeatureExtractor
 
 base_path = pyprojroot.find_root(pyprojroot.has_dir(".git"))
+
+nlp = spacy.load('ja_ginza')
 
 def build_features(split):
     titles = []
@@ -21,12 +24,12 @@ def build_features(split):
     for key in tqdm(chatgpt4o_data, desc="chatgpt4o"):
         titles.append(key)
         labels.append(1)
-        vec = FeatureExtractor(chatgpt4o_data[key]).extract_future_vector()
+        vec = FeatureExtractor(chatgpt4o_data[key], nlp).extract_future_vector()
         vectors.append(vec)
     for key in tqdm(wiki40bja_data, desc="wiki40b-ja"):
         titles.append(key)
         labels.append(0)
-        vec = FeatureExtractor(wiki40bja_data[key]).extract_future_vector()
+        vec = FeatureExtractor(wiki40bja_data[key], nlp).extract_future_vector()
         vectors.append(vec)
     with open(base_path / f"data/features/{split}.json", "wb") as f:
         pickle.dump(
