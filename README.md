@@ -32,3 +32,7 @@ class AsyncChatGPTClient:
         pass
         return "response"
 ```
+## Acknowledgements
+- Wiki-40B : https://research.google/pubs/wiki-40b-multilingual-language-model-dataset/
+
+- wiki40b-ja : https://huggingface.co/datasets/range3/wiki40b-ja
