@@ -16,8 +16,7 @@ class Trainer:
             
     def train(self, max_depth: float, n_estimators: float, range_ = None) -> None: 
         # range: 特徴量の範囲指定
-        X = self.X.copy()
         if range_ is not None:
-            X = X[:,range_[0]:range_[1]]
+            self.X = self.X[:,range_[0]:range_[1]]
         self.model = Ensemble.RandomForestClassifier(max_depth=max_depth, n_estimators=n_estimators)
-        self.model.fit(X, self.y)
+        self.model.fit(self.X, self.y)

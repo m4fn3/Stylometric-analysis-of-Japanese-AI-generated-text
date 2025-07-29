@@ -15,10 +15,9 @@ class Validator:
             self.model = pickle.load(f)
             
     def evaluate_model(self, range_ = None) -> tuple[float, float, float, float]:
-        X = self.X.copy()
         if range_ is not None:
-            X = X[:,range_[0]:range_[1]]
-        y_pred = self.model.predict(X)
+            self.X = self.X[:,range_[0]:range_[1]]
+        y_pred = self.model.predict(self.X)
         accuracy = metrics.accuracy_score(self.y, y_pred)
         precision = metrics.precision_score(self.y, y_pred, zero_division=0, average="macro")
         recall = metrics.recall_score(self.y, y_pred, zero_division=0, average="macro")
