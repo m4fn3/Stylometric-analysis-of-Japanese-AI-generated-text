@@ -10,9 +10,8 @@ with open(path, "rb") as f:
     s, y, X = pickle.load(f)
     
 # n番目の特徴量の値を分析
-# 2202: 機能語の使用頻度「特に」
-# 2142: 句読点の分布(8)
-feature_num = 2142
+feature_num = 2141 # <- 変数
+feature_num -= 1 # indexに変換
 chatgpt4o = []
 wiki40b = []
 for i in range(len(y)):

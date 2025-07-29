@@ -35,11 +35,19 @@ for n in tqdm(hyperparameters["n_estimators"]):
         my_trainer.dump_model(model_output_path)
         print(f"[o] Model saved to {model_output_path}")
     
-# Ablation study: 特徴量ベクトルの一部分のみを利用して学習
-for f, r in tqdm(features.items()):
-    model_output_path = os.path.join(model_output_dir, f"abltaion/RF_f{f}_dNone_n100.pkl")
-    my_trainer.train(None, 100, range=[r[0]-1, r[1]])
-    my_trainer.dump_model(model_output_path)
-    print(f"[o] Model saved to {model_output_path}")
+# Ablation study
+# for i in tqdm([1]):
+#     model_output_path = os.path.join(model_output_dir, f"ablation/RF_abl_dNone_n100.pkl")
+#     my_trainer.train(None, 100)
+#     my_trainer.dump_model(model_output_path)
+#     print(f"[o] Model saved to {model_output_path}")
+
+# 1~6のみ
+# for f, r in tqdm(features.items()):
+#     model_output_path = os.path.join(model_output_dir, f"ablation/RF_f{f}_dNone_n100.pkl")
+#     my_trainer.train(None, 100, range_=[r[0]-1, r[1]])
+#     my_trainer.dump_model(model_output_path)
+#     print(f"[o] Model saved to {model_output_path}")
+
 
 print(f"[o] Training completed and models are saved to {model_output_dir}.")
