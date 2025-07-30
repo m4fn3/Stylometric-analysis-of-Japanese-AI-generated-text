@@ -7,12 +7,12 @@ import japanize_matplotlib
 
 base_path = pyprojroot.find_root(pyprojroot.has_dir(".git"))
 
-model_path = base_path / "models/ablation/RF_abl4_dNone_n100.pkl"
+model_path = base_path / "models/best_model.pkl"
 with open(model_path, 'rb') as f:
     model = pickle.load(f)
     
 labels = []
-with open(base_path / "src/misc/feature_names_abl_4.json", 'r') as f:
+with open(base_path / "src/misc/feature_names.json", 'r') as f:
     labels = json.load(f)
 
 # その値の降順に並べ替え、上位n個を取得
